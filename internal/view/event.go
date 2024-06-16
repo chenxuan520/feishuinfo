@@ -29,7 +29,7 @@ func (e *EventRoute) MsgReceive(ctx context.Context, event *larkim.P2MessageRece
 		logger.GetLogger().Error("Error:get wrong message")
 		return nil
 	}
-	userId = *event.Event.Sender.SenderId.UserId
+	userId := *event.Event.Sender.SenderId.UserId
 
 	text := larkim.MessagePostText{}
 	err := json.Unmarshal([]byte(*event.Event.Message.Content), &text)
@@ -38,6 +38,7 @@ func (e *EventRoute) MsgReceive(ctx context.Context, event *larkim.P2MessageRece
 	}
 	switch *event.Event.Message.MessageType {
 	case "text":
+		e.ChatService.DealMsg(userId, text.Text)
 	default:
 	}
 	return nil
