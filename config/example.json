@@ -1,0 +1,12 @@
+{
+	"feishu":{
+		"app_id":"example",
+		"app_secret":"example",
+		"encrypt_key":"example",
+		"verification":"example"
+	},
+	"server":{
+		"port":5202,
+		"host":"0.0.0.0"
+	}
+}
