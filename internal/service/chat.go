@@ -31,6 +31,7 @@ func (c *ChatService) RobotSendTextMsg(receiveID, content string) error {
 	}
 	// 这里需要将error中的"替换成\"，否则在发消息时会出现json反序列化错误
 	content = strings.Replace(content, "\"", "\\\"", -1)
+	content = strings.Replace(content, "\\", "\\\\", -1)
 
 	content = larkim.NewTextMsgBuilder().Text(content).Build()
 	uuid := time.Now().String()

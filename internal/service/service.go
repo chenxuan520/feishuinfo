@@ -78,7 +78,7 @@ func InitModuleService() {
 		DefaultModuleService = &ModuleService{
 			ChatService:    NewChatService(),
 			Modules:        make([]Module, 0),
-			DefaultContent: "Application For Feishu Quick Help\n",
+			DefaultContent: "Application For Feishu Quick Help\\n",
 		}
 
 		// TODO:register model in there
@@ -86,7 +86,7 @@ func InitModuleService() {
 
 		// add module help message
 		for _, module := range DefaultModuleService.Modules {
-			DefaultModuleService.DefaultContent += module.RegisterStr() + " " + module.HelpStr() + "\n"
+			DefaultModuleService.DefaultContent += module.RegisterStr() + ":" + module.HelpStr() + "\\n"
 		}
 	}
 }
