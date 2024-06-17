@@ -53,3 +53,24 @@ func InitConfig() error {
 	log.Println("Config " + configFile + " loaded.")
 	return nil
 }
+
+func InitWithPath(configPath string) error {
+	data, err := ioutil.ReadFile(configPath)
+
+	if err != nil {
+		return err
+	}
+
+	config := &Config{}
+
+	err = json.Unmarshal(data, config)
+
+	if err != nil {
+		log.Println("Unmarshal config error!")
+		return err
+	}
+
+	GlobalConfig = config
+	log.Println("Config " + configPath + " loaded.")
+	return nil
+}

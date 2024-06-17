@@ -25,26 +25,7 @@ func main() {
 	}
 
 	g := gin.Default()
-
-	// for feishu check
-	// g.POST("/api/event", func(c *gin.Context) {
-	// 	type ChallengeReq struct {
-	// 		Challenge string `json:"challenge"`
-	// 	}
-	// 	req := ChallengeReq{}
-	// 	err := c.BindJSON(&req)
-	// 	if err != nil {
-	// 		fmt.Println(err)
-	// 		c.JSON(400, gin.H{
-	// 			"code": 1,
-	// 			"msg":  err.Error(),
-	// 		})
-	// 		return
-	// 	}
-	// 	c.JSON(200, gin.H{
-	// 		"challenge": req.Challenge,
-	// 	})
-	// })
+	g.Use(gin.Recovery())
 	view.InitGin(g)
 	g.Run(fmt.Sprintf("%s:%d", config.GlobalConfig.Server.Host, config.GlobalConfig.Server.Port))
 }

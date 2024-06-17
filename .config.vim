@@ -25,7 +25,7 @@ let s:pwd=expand('%:p:h')
 let g:Term_project_task=[
 			\{
 			\'name'       : 'build',
-			\'command'    : 'go build -o feishuinfo ./cmd/main.go',
+			\'command'    : 'rm ./feishuinfo;make',
 			\'mode'       : 'quickfix',
 			\'path'       : s:root,
 			\'close'      : 2,
