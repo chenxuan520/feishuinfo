@@ -5,6 +5,7 @@ import (
 
 	"github.com/chenxuan520/feishuinfo/internal/config"
 	"github.com/chenxuan520/feishuinfo/internal/logger"
+	"github.com/chenxuan520/feishuinfo/internal/service"
 	"github.com/chenxuan520/feishuinfo/internal/tools"
 	"github.com/chenxuan520/feishuinfo/internal/view"
 	"github.com/gin-gonic/gin"
@@ -23,6 +24,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	service.InitModuleService()
 
 	g := gin.Default()
 	g.Use(gin.Recovery())

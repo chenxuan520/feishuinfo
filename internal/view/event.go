@@ -12,7 +12,7 @@ import (
 )
 
 type EventRoute struct {
-	ChatService *service.ChatService
+	MoudleService *service.ModuleService
 }
 
 func (e *EventRoute) InitEvent() *dispatcher.EventDispatcher {
@@ -38,7 +38,7 @@ func (e *EventRoute) MsgReceive(ctx context.Context, event *larkim.P2MessageRece
 	}
 	switch *event.Event.Message.MessageType {
 	case "text":
-		e.ChatService.DealMsg(userId, text.Text)
+		e.MoudleService.DealMsg(userId, text.Text)
 	default:
 	}
 	return nil
@@ -46,6 +46,6 @@ func (e *EventRoute) MsgReceive(ctx context.Context, event *larkim.P2MessageRece
 
 func NewEventRoute() *EventRoute {
 	return &EventRoute{
-		ChatService: service.NewChatService(),
+		MoudleService: service.NewModuleService(),
 	}
 }

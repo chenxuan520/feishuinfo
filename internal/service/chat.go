@@ -24,17 +24,6 @@ func NewChatService() *ChatService {
 	return DefaultChatService
 }
 
-func (c *ChatService) DealMsg(userId, content string) {
-	if userId == "" || content == "" {
-		return
-	}
-	logger.GetLogger().Debug(fmt.Sprintf("DEBUG:userId:%s,content:%s", userId, content))
-	err := c.RobotSendTextMsg(userId, "Hello World")
-	if err != nil {
-		logger.GetLogger().Error(fmt.Sprintf("ERROR:DealMsg:send msg error:%s", err.Error()))
-	}
-}
-
 func (c *ChatService) RobotSendTextMsg(receiveID, content string) error {
 	if content == "" {
 		logger.GetLogger().Debug("DEBUG:content is empty")
