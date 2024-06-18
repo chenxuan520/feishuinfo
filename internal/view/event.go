@@ -31,14 +31,21 @@ func (e *EventRoute) MsgReceive(ctx context.Context, event *larkim.P2MessageRece
 	}
 	userId := *event.Event.Sender.SenderId.UserId
 
-	text := larkim.MessagePostText{}
-	err := json.Unmarshal([]byte(*event.Event.Message.Content), &text)
-	if err != nil {
-		return nil
-	}
 	switch *event.Event.Message.MessageType {
 	case "text":
-		e.MoudleService.DealMsg(userId, text.Text)
+		text := larkim.MessagePostText{}
+		err := json.Unmarshal([]byte(*event.Event.Message.Content), &text)
+		if err != nil {
+			return nil
+		}
+		e.MoudleService.DealTextMsg(userId, text.Text)
+	case "image":
+		img := larkim.MessageImage{}
+		err := json.Unmarshal([]byte(*event.Event.Message.Content), &img)
+		if err != nil {
+			return nil
+		}
+		e.MoudleService.DealImageMsg(userId, img.ImageKey)
 	default:
 	}
 	return nil

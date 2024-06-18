@@ -6,6 +6,19 @@ import (
 	"log"
 )
 
+type Img2Siyuan struct {
+	Token   string `json:"token"`
+	Host    string `json:"host"`
+	BlockId string `json:"block_id"`
+}
+
+type Module struct {
+	Img2Siyuan Img2Siyuan `json:"img2siyuan"`
+}
+
+type Model struct {
+}
+
 type Server struct {
 	Host string `json:"host"`
 	Port int    `json:"port"`
@@ -21,6 +34,8 @@ type Feishu struct {
 type Config struct {
 	Feishu Feishu `json:"feishu"`
 	Server Server `json:"server"`
+	Module Module `json:"module"`
+	Model  Model  `json:"model"`
 }
 
 var (

@@ -31,3 +31,10 @@ func ExtractFirstWord(s string) (string, string) {
 
 	return firstWord, remainder
 }
+
+// 将字符串的 \n 替换为\\n " 替换为\"
+func ReplaceSpecialChar(s string) string {
+	s = strings.Replace(s, "\n", "\\n", -1)
+	s = strings.Replace(s, "\"", "\\\"", -1)
+	return s
+}
